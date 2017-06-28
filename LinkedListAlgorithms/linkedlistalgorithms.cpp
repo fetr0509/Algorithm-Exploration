@@ -41,4 +41,12 @@ Node* returnLastKElement(Node* head, int k)
     return current;
 }
 
+void deleteMiddleNode(Node* middleNode)
+{
+    Node* tempNext = middleNode->next;
+    middleNode->data = tempNext->data;
+    middleNode->next = tempNext->next;
+    delete tempNext;
+}
+
 
