@@ -20,4 +20,25 @@ void deleteDuplicates(Node* head)
     }
 }
 
+Node* returnLastKElement(Node* head, int k)
+{
+    Node* runner = head;
+    Node* current = head;
+
+    for(int count = 0; count < k; count++)
+    {
+        if(runner == NULL)
+            return current;
+        else
+            runner = runner->next;
+    }
+
+    while (runner != NULL)
+    {
+        runner = runner->next;
+        current = current->next;
+    }
+    return current;
+}
+
 
