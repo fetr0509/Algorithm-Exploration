@@ -49,4 +49,40 @@ void deleteMiddleNode(Node* middleNode)
     delete tempNext;
 }
 
+void partitionAroundValue(Node* head, int value)
+{
+    Node* smaller = head;
+    int smallerPosition = 0;
+    Node* bigger = head;
+    int biggerPosition = 0;
+
+    while(bigger != NULL && smaller != NULL)
+    {
+        while (bigger->data < value)
+        {
+                bigger = bigger->next;
+                biggerPosition++;
+                if(bigger == NULL)
+                    return;
+        }
+
+        while (smaller->data >= value)
+        {
+                smaller = smaller->next;
+                smallerPosition++;
+                if(smaller == NULL)
+                    return;
+        }
+        if(smallerPosition > biggerPosition)
+        {
+            int temp = bigger->data;
+            bigger->data = smaller->data;
+            smaller->data = temp;
+        } else {
+            smaller = smaller->next;
+            bigger = bigger->next;
+        }
+    }
+}
+
 

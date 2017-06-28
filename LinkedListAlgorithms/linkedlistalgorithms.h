@@ -7,5 +7,6 @@
 void deleteDuplicates(Node* head);
 Node* returnLastKElement(Node* head, int k);
 void deleteMiddleNode(Node* middleNode);
+void partitionAroundValue(Node* head, int value);
 
 #endif // LINKEDLISTALGORITHMS_H
