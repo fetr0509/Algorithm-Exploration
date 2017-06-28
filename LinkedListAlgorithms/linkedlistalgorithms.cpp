@@ -85,4 +85,50 @@ void partitionAroundValue(Node* head, int value)
     }
 }
 
+Node* addLinkedLists(Node* listOne, Node* listTwo)
+{
+    Node* runnerOne = listOne;
+    Node* runnerTwo = listTwo;
+    Node* newList = NULL;
+    Node* currentNode;
+    int carry = 0;
 
+    while(runnerOne != NULL && runnerTwo != NULL)
+    {
+        if(newList == NULL)
+        {
+            newList = new Node;
+            currentNode = newList;
+        }
+        else
+        {
+            Node* newNode = new Node;
+            currentNode->next = newNode;
+            currentNode = currentNode->next;
+        }
+
+        int sum = runnerOne->data + runnerTwo->data + carry;
+        if(sum > 9)
+        {
+            currentNode->data = sum - 10;
+            carry = 1;
+        }
+        else
+        {
+            currentNode->data = sum;
+            carry = 0;
+        }
+        runnerOne = runnerOne->next;
+        runnerTwo = runnerTwo->next;
+
+    }
+    if(runnerOne != NULL)
+    {
+        currentNode->next = runnerOne;
+    }
+    if(runnerTwo != NULL)
+    {
+        currentNode->next = runnerTwo;
+    }
+    return newList;
+}
