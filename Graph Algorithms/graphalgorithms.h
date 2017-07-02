@@ -8,5 +8,6 @@
 
 bool findPathExists(TreeNode* root, int data);
 TreeNode* sortedArraytoTree(int sorted[], int min, int max);
+std::vector<Node*> createListsFromDepth(TreeNode* root);
 
 #endif // GRAPHALGORITHMS_H
