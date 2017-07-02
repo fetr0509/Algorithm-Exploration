@@ -24,7 +24,20 @@ bool findPathExists(TreeNode* root, int data)
     return false;
 }
 
+TreeNode* sortedArraytoTree(int sorted[], int min, int max)
+{
+    if(max < min)
+        return nullptr;
 
+    TreeNode* newNode = new TreeNode;
+    int pivot = (min+max)/2;
+    newNode->value = sorted[pivot];
+
+    newNode->leftLeaf = sortedArraytoTree(sorted, min, pivot-1);
+    newNode->rightLeaf = sortedArraytoTree(sorted, pivot+1, max);
+
+    return newNode;
+}
 
 
 
