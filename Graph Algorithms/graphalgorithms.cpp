@@ -77,4 +77,29 @@ std::vector<Node*> createListsFromDepth(TreeNode* root)
     return depthVector;
 }
 
+int getDepth(TreeNode* root)
+{
+    if(root == nullptr)
+        return 0;
 
+    int left = 0;
+    if(root->leftLeaf)
+       left =  getDepth(root->leftLeaf)+1;
+
+    int right = 0;
+    if(root->rightLeaf)
+       right =  getDepth(root->rightLeaf)+1;
+
+    return (right < left) ? left : right;
+}
+
+bool isTreeBalanced(TreeNode* root)
+{
+    if(!root)
+        return false;
+
+    int left = getDepth(root->leftLeaf);
+    int right = getDepth(root->rightLeaf);
+
+    return (abs(left-right) > 1) ? false : true;
+}
